@@ -1,4 +1,4 @@
-package com.example.jessi.abdulmvppractice;
+package com.example.jessi.abdulmvppractice.data;
 
 public class Model {
     private String modelInfo;

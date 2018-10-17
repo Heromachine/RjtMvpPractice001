@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jessi.abdulmvppractice.data.Model;
+
 public class MainActivity extends AppCompatActivity implements Contract.IView {
 
     EditText etInfo;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements Contract.IView {
 
     @Override
     public void displayInfo(Model model){
+
         display.setText(model.getModelInfo());
     }
 

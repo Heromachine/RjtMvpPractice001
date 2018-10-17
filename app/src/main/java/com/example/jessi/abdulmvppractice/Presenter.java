@@ -2,20 +2,28 @@ package com.example.jessi.abdulmvppractice;
 
 import android.view.View;
 
-public class Presenter implements Contract.IPresenter {
+import com.example.jessi.abdulmvppractice.data.DataManager;
+import com.example.jessi.abdulmvppractice.data.IDataManager;
+import com.example.jessi.abdulmvppractice.data.Model;
+
+public class Presenter implements Contract.IPresenter, IDataManager.OnResponseListener {
     private static final String TAG = "Presenter";
     Contract.IView view;
-    static Model model = new Model();
+    IDataManager iDataManager;
+
 
     public Presenter(MainActivity mainActivity) {
         view = mainActivity;
+        iDataManager = new DataManager();
     }
+
+
     @Override
     public void onSetClicked(View view){
         switch(view.getId()){
             case R.id.btn_set:
                 this.view.setToast("Set Clicked");
-                model = this.view.getModel();
+                iDataManager.writeRow(this, this.view.getModel());
                 break;
         }
     }
@@ -24,10 +32,15 @@ public class Presenter implements Contract.IPresenter {
     public void onGetClicked(View view) {
         switch(view.getId()){
             case R.id.btn_get:
-                this.view.setToast("Get Clicked");
-                this.view.displayInfo(model);
+                iDataManager.readRow(this);
                 break;
         }
 
+    }
+
+
+    @Override
+    public void getTodoNote(Model model) {
+        this.view.displayInfo(model);
     }
 }

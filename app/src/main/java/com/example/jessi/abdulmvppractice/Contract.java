@@ -2,6 +2,8 @@ package com.example.jessi.abdulmvppractice;
 
 import android.view.View;
 
+import com.example.jessi.abdulmvppractice.data.Model;
+
 public interface Contract {
 
     interface IView {
